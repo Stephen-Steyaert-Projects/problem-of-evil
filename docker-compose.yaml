@@ -4,7 +4,7 @@ services:
     restart: unless-stopped
     environment:
       - FLASK_ENV=production
-      - VIRTUAL_HOST=information-literacy.steyaert.xyz
+      - VIRTUAL_HOST=problem-of-evil.steyaert.xyz
       - VIRTUAL_PORT=8000
     networks:
       - nginx-proxy
