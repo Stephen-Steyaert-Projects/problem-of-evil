@@ -14,6 +14,16 @@ body {
     margin-bottom: 2rem;
 }
 
+@media (max-width: 991.98px) {
+    .navbar-collapse .nav {
+        flex-direction: column;
+    }
+
+    .navbar-collapse .nav-item {
+        width: 100%;
+    }
+}
+
 .section-card {
     background-color: rgba(0, 0, 0, 0.03);
     border-left: 4px solid #f06292;

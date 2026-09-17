@@ -12,7 +12,7 @@ dev: ## Run Flask development server locally
 css: ## Minify base.css into static/css/base.min.css
 	uv run --with rcssmin python3 -c "\
 import rcssmin, pathlib; \
-src = pathlib.Path('project/templates/static/base.css').read_text(); \
+src = pathlib.Path('project/static/css/base.css').read_text(); \
 pathlib.Path('project/static/css/base.min.css').write_text(rcssmin.cssmin(src))"
 
 dev-docker: ## Run Flask in Docker for development
