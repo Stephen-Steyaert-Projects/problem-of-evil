@@ -17,5 +17,5 @@ jobs:
     steps:
       - name: Deploy to production
         run: |
-          cd /srv/infolit
+          cd /srv/apologetics/problem-of-evil
           make compose-up
