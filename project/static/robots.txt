@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://problem-of-evil.steyaert.xyz/sitemap.xml

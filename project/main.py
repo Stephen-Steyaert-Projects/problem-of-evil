@@ -66,6 +66,11 @@ def add_cache_headers(response):
 def robots():
     return send_from_directory(Path(app.root_path) / 'static', 'robots.txt')
 
+# Route for sitemap.xml
+@app.route('/sitemap.xml')
+def sitemap():
+    return send_from_directory(Path(app.root_path) / 'static', 'sitemap.xml')
+
 # Register blueprints
 app.register_blueprint(blueprint, url_prefix="")
 
