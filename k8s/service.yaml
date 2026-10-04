@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: web
+  namespace: problem-of-evil
+spec:
+  selector:
+    app: web
+  ports:
+    - port: 8000
+      targetPort: 8000

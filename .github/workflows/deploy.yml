@@ -15,7 +15,19 @@ jobs:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
-      - name: Deploy to production
+      # Only the k8s manifests + Makefile are needed on the runner; the app
+      # itself runs from the image pulled by `kubectl set image`.
+      - name: Checkout k8s manifests and Makefile
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+          sparse-checkout: |
+            k8s
+            Makefile
+          sparse-checkout-cone-mode: false
+
+      - name: Deploy to k3s
         run: |
-          cd /srv/apologetics/problem-of-evil
-          make compose-up
+          TAG=sha-$(echo "${{ github.event.workflow_run.head_sha }}" | cut -c1-7)
+          kubectl apply -f k8s/
+          make k8s-deploy TAG=$TAG

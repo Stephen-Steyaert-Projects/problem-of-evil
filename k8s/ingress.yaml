@@ -1,0 +1,26 @@
+# TLS secret "steyaert-wildcard" must exist in this namespace too (k8s
+# secrets are namespace-scoped) - see the gradpace k8s/ setup for how it was
+# created from /etc/ssl/cloudflare/steyaert.xyz.{crt,key}. Same cert, copied
+# into each namespace that needs it.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: web
+  namespace: problem-of-evil
+spec:
+  ingressClassName: traefik
+  tls:
+    - hosts:
+        - problem-of-evil.steyaert.xyz
+      secretName: steyaert-wildcard
+  rules:
+    - host: problem-of-evil.steyaert.xyz
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: web
+                port:
+                  number: 8000
