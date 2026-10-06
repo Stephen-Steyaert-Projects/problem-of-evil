@@ -11,7 +11,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: steyaert-projects
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
 
     steps:
